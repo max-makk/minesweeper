@@ -1,2 +1,3 @@
-import './style.css'
-console.log('hi')
+import './style.css';
+
+document.body.append('hello');

@@ -1,3 +1,6 @@
 import './style.css';
+import MineSweeper from './components/MineSweeper';
 
-document.body.append('hello');
+const mineSweeper = new MineSweeper();
+
+mineSweeper.createAndShowUI();

@@ -1,3 +1,69 @@
 body {
-  background-color: orange;
+  margin: 0;
+  height: 100vh;
+  background-color: ghostwhite;
+  font-family: monospace;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#root {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 0.5em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 2em);
+  gap: 2px;
+}
+
+.btn {
+  aspect-ratio: 1;
+  background-color: darksalmon;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  /* padding-top: 100%; */
+}
+
+.color-1 {
+  color: blue;
+}
+
+.color-2 {
+  color: green;
+}
+
+.color-3 {
+  color: red;
+}
+
+.color-4 {
+  color: purple;
+}
+
+.color-5 {
+  color: maroon;
+}
+
+.color-6 {
+  color: turquoise;
+}
+
+.color-7 {
+  color: black;
+}
+
+.color-8 {
+  color: gray;
 }

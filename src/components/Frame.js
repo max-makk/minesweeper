@@ -7,12 +7,31 @@ class Frame {
   }
 
   gridLayout(rows, columns) {
+    this.grid.textContent = '';
+    this.grid.classList = '';
     this.grid.classList.add('grid');
+    if (rows === 10 && columns === 10) {
+      this.grid.classList.add('small');
+    } else if (rows === 15 && columns === 15) {
+      this.grid.classList.add('medium');
+    } else if (rows === 25 && columns === 25) {
+      this.grid.classList.add('large');
+    }
     this.root.append(this.grid);
   }
 
-  add(button) {
+  addButton(button) {
     this.grid.append(button);
+  }
+
+  addPanel(panel) {
+    panel.classList.add('panel');
+    this.root.prepend(panel);
+  }
+
+  addMenu(menu) {
+    menu.classList.add('menu');
+    this.root.prepend(menu);
   }
 
   setVisible() {

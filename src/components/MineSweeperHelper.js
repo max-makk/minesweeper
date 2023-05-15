@@ -3,11 +3,16 @@ class Helper {
     this.mineSweeper = mineSweeper;
   }
 
+  updateLabels() {
+    this.mineSweeper.minesFoundLabel.textContent = `Found: ${this.mineSweeper.mineField.getMinesFound()}`;
+    this.mineSweeper.minesRemainingLabel.textContent = `Remaining: ${this.mineSweeper.mineField.getMinesRemaining()}`;
+  }
+
   updateButtons() {
     for (let i = 0; i < this.mineSweeper.rows; i += 1) {
       for (let j = 0; j < this.mineSweeper.columns; j += 1) {
         if (this.mineSweeper.mineField.getMineCleared(i, j)) {
-          this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'white';
+          this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'ghostwhite';
           this.mineSweeper.mineButtons[i][j].removeEventListener('click', this.mineSweeper.mouseListener);
           const count = this.mineSweeper.mineField.countAdjacentMines(i, j);
           if (count > 0) {
@@ -35,7 +40,7 @@ class Helper {
           this.mineSweeper.mineButtons[i][j].textContent = '💣';
         } else {
           this.mineSweeper.mineButtons[i][j].removeEventListener('click', this.mineSweeper.mouseListener);
-          this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'white';
+          this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'ghostwhite';
           const count = this.mineSweeper.mineField.countAdjacentMines(i, j);
           if (count > 0) {
             this.mineSweeper.mineButtons[i][j].textContent = count;
@@ -46,12 +51,17 @@ class Helper {
     }
   }
 
+  newGame() {
+    this.mineSweeper.init();
+    this.updateLabels();
+  }
+
   endGame(won) {
     this.showAll();
     if (won) {
-      console.log('won');
+      alert('You won!');
     } else {
-      console.log('lost');
+      alert('You lost.');
     }
   }
 }

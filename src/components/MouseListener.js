@@ -31,6 +31,7 @@ class MouseListener {
         }
       }
     }
+    this.helper.updateLabels();
   }
 }
 

@@ -14,6 +14,7 @@ class Helper {
         if (this.mineSweeper.mineField.getMineCleared(i, j)) {
           this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'ghostwhite';
           this.mineSweeper.mineButtons[i][j].removeEventListener('click', this.mineSweeper.mouseListener);
+          this.mineSweeper.mineButtons[i][j].removeEventListener('contextmenu', this.mineSweeper.mouseListener);
           const count = this.mineSweeper.mineField.countAdjacentMines(i, j);
           if (count > 0) {
             this.mineSweeper.mineButtons[i][j].textContent = count;
@@ -39,7 +40,6 @@ class Helper {
         if (mine) {
           this.mineSweeper.mineButtons[i][j].textContent = '💣';
         } else {
-          this.mineSweeper.mineButtons[i][j].removeEventListener('click', this.mineSweeper.mouseListener);
           this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'ghostwhite';
           const count = this.mineSweeper.mineField.countAdjacentMines(i, j);
           if (count > 0) {
@@ -47,6 +47,8 @@ class Helper {
             this.mineSweeper.mineButtons[i][j].classList.add(`color-${count}`);
           }
         }
+        this.mineSweeper.mineButtons[i][j].removeEventListener('click', this.mineSweeper.mouseListener);
+        this.mineSweeper.mineButtons[i][j].removeEventListener('contextmenu', this.mineSweeper.mouseListener);
       }
     }
   }

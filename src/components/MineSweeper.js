@@ -53,6 +53,8 @@ class MineSweeper {
   addMenu() {
     const menu = document.createElement('div');
 
+    const newGameGroup = document.createElement('div');
+    newGameGroup.classList.add('group');
     const labelMines = document.createElement('label');
     const inputMines = document.createElement('input');
     inputMines.setAttribute('type', 'range');
@@ -60,9 +62,19 @@ class MineSweeper {
     inputMines.setAttribute('max', '99');
     inputMines.setAttribute('step', '1');
     inputMines.setAttribute('value', '10');
-    inputMines.addEventListener('input', this.actionListener);
+    inputMines.addEventListener('input', (e) => {
+      this.minesRemainingLabel.textContent = `Remaining: ${e.target.value}`;
+    });
+    inputMines.addEventListener('change', this.actionListener);
     labelMines.append('Mines');
     labelMines.append(inputMines);
+    newGameGroup.append(labelMines);
+
+    const newGameBtn = document.createElement('div');
+    newGameBtn.addEventListener('click', this.actionListener);
+    newGameBtn.classList.add('new-game');
+    newGameBtn.textContent = 'New Game';
+    newGameGroup.append(newGameBtn);
 
     const options = ['Small', 'Medium', 'Large'];
     const optionsGroup = document.createElement('div');
@@ -79,9 +91,13 @@ class MineSweeper {
       labelOption.append(option);
       optionsGroup.append(labelOption);
     });
-    menu.append(labelMines);
+    menu.append(newGameGroup);
     menu.append(optionsGroup);
     this.frame.addMenu(menu);
+  }
+
+  notify(text = '') {
+    this.frame.displayResult(text);
   }
 
   createAndShowUI() {

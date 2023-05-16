@@ -27,13 +27,13 @@ class MineField {
       for (let j = 0; j < this.columns; j += 1) {
         if (i === x && j === y) {
           const thisMine = this.mineField[i][j];
-          if (!this.isStarted) {
-            this.isStarted = true;
-            if (thisMine.hasMine()) {
-              this.switchMine(i, j);
-            }
-          }
           if (left) {
+            if (!this.isStarted) {
+              this.isStarted = true;
+              if (thisMine.hasMine()) {
+                this.switchMine(i, j);
+              }
+            }
             if (thisMine.getFlagState() === 'MINE') {
               return 'CONTINUE';
             }

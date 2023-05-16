@@ -28,14 +28,14 @@ class MineField {
         if (i === x && j === y) {
           const thisMine = this.mineField[i][j];
           if (left) {
+            if (thisMine.getFlagState() === 'MINE') {
+              return 'CONTINUE';
+            }
             if (!this.isStarted) {
               this.isStarted = true;
               if (thisMine.hasMine()) {
                 this.switchMine(i, j);
               }
-            }
-            if (thisMine.getFlagState() === 'MINE') {
-              return 'CONTINUE';
             }
             if (thisMine.isCleared()) {
               return 'CONTINUE';

@@ -16,6 +16,7 @@ class MouseListener {
             if (state === 'CONTINUE') {
               if (this.mineSweeper.mineField.getMineFlag(i, j) === 'UNKNOWN') {
                 e.target.removeEventListener('click', this);
+                e.target.removeEventListener('contextmenu', this);
               }
             }
           } else {

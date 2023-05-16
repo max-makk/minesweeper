@@ -13,6 +13,10 @@ class Mine {
     this.mine = true;
   }
 
+  removeMine() {
+    this.mine = false;
+  }
+
   isCleared() {
     return this.cleared;
   }

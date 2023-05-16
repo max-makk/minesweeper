@@ -11,6 +11,7 @@ class MineField {
     this.emptiesRemaining = rows * columns - mines;
     this.init();
     this.populate(0);
+    this.isStarted = false;
   }
 
   init() {
@@ -26,6 +27,12 @@ class MineField {
       for (let j = 0; j < this.columns; j += 1) {
         if (i === x && j === y) {
           const thisMine = this.mineField[i][j];
+          if (!this.isStarted) {
+            this.isStarted = true;
+            if (thisMine.hasMine()) {
+              this.switchMine(i, j);
+            }
+          }
           if (left) {
             if (thisMine.getFlagState() === 'MINE') {
               return 'CONTINUE';
@@ -50,6 +57,20 @@ class MineField {
       }
     }
     return 'CONTINUE';
+  }
+
+  switchMine(x, y) {
+    const thisMine = this.mineField[x][y];
+    for (let i = 0; i < this.rows; i += 1) {
+      for (let j = 0; j < this.columns; j += 1) {
+        const current = this.mineField[i][j];
+        if (!current.hasMine()) {
+          current.setMine();
+          thisMine.removeMine();
+          return;
+        }
+      }
+    }
   }
 
   populate(mineCount) {

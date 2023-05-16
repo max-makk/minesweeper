@@ -37,6 +37,14 @@ class Frame {
   setVisible() {
     document.body.append(this.root);
   }
+
+  displayResult(text) {
+    const div = document.createElement('div');
+    div.classList.add('alert');
+    div.textContent = text;
+    this.root.append(div);
+    setTimeout(() => div.remove(), 1000);
+  }
 }
 
 export default Frame;

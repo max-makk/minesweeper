@@ -28,7 +28,14 @@ label {
 
 input {
   margin: 0;
+  font-size: inherit;
   margin-left: 1em;
+}
+
+.new-game {
+  border: 1px solid black;
+  padding: 0.2em;
+  cursor: pointer;
 }
 
 .menu {
@@ -107,4 +114,19 @@ input {
 
 .color-8 {
   color: gray;
+}
+
+.alert {
+  padding: 1em;
+  color: white;
+  background-color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+svg {
+  width: 1em;
+  height: 1em;
 }

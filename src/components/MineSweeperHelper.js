@@ -61,9 +61,9 @@ class Helper {
   endGame(won) {
     this.showAll();
     if (won) {
-      alert('You won!');
+      this.mineSweeper.notify('You won!');
     } else {
-      alert('You lost.');
+      this.mineSweeper.notify('You lost.');
     }
   }
 }

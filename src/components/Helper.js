@@ -11,28 +11,29 @@ class Helper {
   updateButtons() {
     for (let i = 0; i < this.mineSweeper.rows; i += 1) {
       for (let j = 0; j < this.mineSweeper.columns; j += 1) {
+        const btn = this.mineSweeper.mineButtons[i][j];
         if (this.mineSweeper.mineField.getMineCleared(i, j)) {
-          this.mineSweeper.mineButtons[i][j].classList.remove('flag');
-          this.mineSweeper.mineButtons[i][j].classList.remove('suspect');
-          this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'ghostwhite';
-          this.mineSweeper.mineButtons[i][j].removeEventListener('click', this.mineSweeper.mouseListener);
-          this.mineSweeper.mineButtons[i][j].removeEventListener('contextmenu', this.mineSweeper.mouseListener);
+          btn.classList.remove('flag');
+          btn.classList.remove('suspect');
+          btn.style.backgroundColor = 'ghostwhite';
+          btn.removeEventListener('click', this.mineSweeper.mouseListener);
+          btn.removeEventListener('contextmenu', this.mineSweeper.mouseListener);
           const count = this.mineSweeper.mineField.countAdjacentMines(i, j);
           if (count > 0) {
-            this.mineSweeper.mineButtons[i][j].textContent = count;
-            this.mineSweeper.mineButtons[i][j].classList.add(`color-${count}`);
+            btn.textContent = count;
+            btn.classList.add(`color-${count}`);
           }
         } else if (!this.mineSweeper.mineField.getMineCleared(i, j)) {
           if (this.mineSweeper.mineField.getMineFlag(i, j) === 'MINE') {
-            this.mineSweeper.mineButtons[i][j].classList.add('flag');
-            this.mineSweeper.mineButtons[i][j].classList.remove('suspect');
+            btn.classList.add('flag');
+            btn.classList.remove('suspect');
           } else if (this.mineSweeper.mineField.getMineFlag(i, j) === 'SUSPECT') {
-            this.mineSweeper.mineButtons[i][j].classList.add('suspect');
-            this.mineSweeper.mineButtons[i][j].classList.remove('flag');
+            btn.classList.add('suspect');
+            btn.classList.remove('flag');
           } else {
-            this.mineSweeper.mineButtons[i][j].textContent = '';
-            this.mineSweeper.mineButtons[i][j].classList.remove('suspect');
-            this.mineSweeper.mineButtons[i][j].classList.remove('flag');
+            btn.textContent = '';
+            btn.classList.remove('suspect');
+            btn.classList.remove('flag');
           }
         }
       }
@@ -43,21 +44,22 @@ class Helper {
     for (let i = 0; i < this.mineSweeper.rows; i += 1) {
       for (let j = 0; j < this.mineSweeper.columns; j += 1) {
         const mine = this.mineSweeper.mineField.isMine(i, j);
-        this.mineSweeper.mineButtons[i][j].classList.remove('suspect');
-        this.mineSweeper.mineButtons[i][j].classList.remove('flag');
+        const btn = this.mineSweeper.mineButtons[i][j];
+        btn.classList.remove('suspect');
+        btn.classList.remove('flag');
         if (mine) {
-          this.mineSweeper.mineButtons[i][j].classList.add('mine');
+          btn.classList.add('mine');
         } else {
-          this.mineSweeper.mineButtons[i][j].style.backgroundColor = 'ghostwhite';
-          this.mineSweeper.mineButtons[i][j].textContent = '';
+          btn.style.backgroundColor = 'ghostwhite';
+          btn.textContent = '';
           const count = this.mineSweeper.mineField.countAdjacentMines(i, j);
           if (count > 0) {
-            this.mineSweeper.mineButtons[i][j].textContent = count;
-            this.mineSweeper.mineButtons[i][j].classList.add(`color-${count}`);
+            btn.textContent = count;
+            btn.classList.add(`color-${count}`);
           }
         }
-        this.mineSweeper.mineButtons[i][j].removeEventListener('click', this.mineSweeper.mouseListener);
-        this.mineSweeper.mineButtons[i][j].removeEventListener('contextmenu', this.mineSweeper.mouseListener);
+        btn.removeEventListener('click', this.mineSweeper.mouseListener);
+        btn.removeEventListener('contextmenu', this.mineSweeper.mouseListener);
       }
     }
   }

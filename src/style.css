@@ -141,7 +141,7 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 10px paleturquoise;
+  box-shadow: 0 0 0 5px white, 0 0 0 15px black;
   font-size: 1.2rem;
   font-weight: bold;
 }

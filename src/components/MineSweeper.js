@@ -1,6 +1,6 @@
 import Frame from './Frame';
 import MineField from './MineField';
-import Helper from './MineSweeperHelper';
+import Helper from './Helper';
 import MouseListener from './MouseListener';
 import ActionListener from './ActionListener';
 
